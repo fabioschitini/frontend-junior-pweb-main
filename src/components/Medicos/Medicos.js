@@ -13,7 +13,7 @@ const instance = Axios.create({
 const Medicos=()=>{
     const [medicos,setMedicos]=useState([])
     function deletar(id){
-        instance.delete(`medicos/${id}`).then(setMedicos(medicos.filter(medico=>medico.id!=id)))
+        instance.delete(`medicos/${id}`).then(setMedicos(medicos.filter(medico=>medico.id!==id)))
     }
     useEffect(()=>{
         instance.get(`/medicos/api`).then(data=>{ 
@@ -35,7 +35,7 @@ const Medicos=()=>{
        <Link to='/medicos/adicionar'> <Button  style={{backgroundColor:'#641864',borderColor:'black'}}>Adicionar Medico</Button></Link>
         </div>
         <div style={{display:'flex',flexDirection:'column'}}>
-            <div className='my-0' style={{display:'flex',justifyContent:'space-between'}}><h5>Medico</h5><h5>Endereco</h5></div>
+            <div className='my-0' style={{display:'flex',justifyContent:'space-between'}}><h5>Medico</h5><h5>Endereço</h5></div>
                 {medicos.map(medico=>{
                     return(
                         <div key={medico.id}className='my-0'  style={{display:'flex',flexDirection:'row',justifyContent: 'space-between'}} >

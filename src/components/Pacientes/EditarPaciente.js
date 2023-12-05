@@ -1,7 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button,Form,Alert} from 'react-bootstrap';
+import { Button,Form} from 'react-bootstrap';
 import { Formik } from 'formik';
-import { useNavigate,useLocation,useSearchParams } from "react-router-dom";
+import { useNavigate,useLocation } from "react-router-dom";
 import * as yup from 'yup';
 import { useState,useEffect } from 'react';
 import { Link} from 'react-router-dom';
@@ -13,10 +13,7 @@ const instance = Axios.create({
     baseURL: 'http://localhost:8082/paciente-ms',
   });
 const EditarMedicos=()=>{
-  const [tokenError,setTokenError]=useState(false)
-  const [show, setShow] = useState(false);
   const [valoresIniciais,setValoresIniciais]=useState([])
-  const [finalToken,setFinalToken]=useState('yolo')
   const [update,setUpdate]=useState(false)
   const location = useLocation();
   const filteredId=location.pathname.replace('/paciente/edit/','');
@@ -89,13 +86,8 @@ const EditarMedicos=()=>{
       {({
         handleSubmit,
         handleChange,
-        handleBlur,
         values,
-        touched,
-        isValid,
         errors,
-        isValidating,
-        validate,
       }) => (
         <Form noValidate onSubmit={handleSubmit}>
 
@@ -106,12 +98,11 @@ const EditarMedicos=()=>{
                 name="nome"
                 value={values.nome}
                 onChange={handleChange}
-                isInvalid={errors.nome||tokenError}
+                isInvalid={errors.nome}
                 placeholder="Nome..."
                 required
               />
               <Form.Control.Feedback type='invalid'>{errors.token}</Form.Control.Feedback>
-              <Form.Control.Feedback type='invalid'>{tokenError}</Form.Control.Feedback>
             </Form.Group>
 
             <Form.Group   md="10" controlId="validationFormik01">

@@ -14,6 +14,7 @@ const instance = Axios.create({
   });
 const MarcarConsultas=()=>{
   const [consultaError,setConsultaError]=useState(false)
+  const [dataError,setDataError]=useState(false)
   const navigate=useNavigate()
   const [medicos,setMedicos]=useState(false)
   const [pacientes,setPacientes]=useState([])
@@ -56,7 +57,7 @@ const MarcarConsultas=()=>{
             </div>
           </div>
         <div className='my-3' style={{display:'flex',justifyContent:'space-between'}}><h5>Marcar Consulta </h5>
-        <Link to='/medicos'> <Button style={{backgroundColor:'#641864',borderColor:'black'}} className="w-10 btn btn-sm btn-primary">Voltar</Button> </Link>
+        <Link to='/'> <Button style={{backgroundColor:'#641864',borderColor:'black'}} className="w-10 btn btn-sm btn-primary">Voltar</Button> </Link>
         </div>
         
        <Formik
@@ -83,8 +84,8 @@ const MarcarConsultas=()=>{
             navigate('/')
         })
          .catch(e=>{
-          console.log(e)
-        setConsultaError(e.response.data.mensagem)
+          if(e.response.data.mensagem)setConsultaError(e.response.data.mensagem)
+          else setDataError(e.response.data.errors[0])
     })
 
         }}
@@ -150,11 +151,12 @@ const MarcarConsultas=()=>{
                 name="data"
                 value={values.data}
                 onChange={handleChange}
-                isInvalid={errors.data||consultaError}
+                isInvalid={errors.data||consultaError|| dataError}
                 placeholder="Data"
                 required
               />
               <Form.Control.Feedback type='invalid'>{errors.data}</Form.Control.Feedback>
+              <Form.Control.Feedback type='invalid'>{dataError}</Form.Control.Feedback>
               <Form.Control.Feedback type='invalid'>{consultaError}</Form.Control.Feedback>
 
             </Form.Group>

@@ -10,7 +10,6 @@ import AdicionarPaciente from './components/Pacientes/AdicionarPacientes'
 import Consultas from './components/Consultas/Consultas'
 import MarcarConsultas from './components/Consultas/MarcarConsulta';
 import DesmarcarConsulta from './components/Consultas/DesmarcarConsulta'
-import Add from './components/Add'
 import './App.css';
 
 export default function App() {
@@ -28,7 +27,6 @@ export default function App() {
           <Route exact path='/medicos' element={<Medicos/>} />
           <Route exact path='/medicos/adicionar' element={<AdicionarMedicos/>} />
           <Route exact path='/medico/edit/:id'  element={<EditarMedicos/>} />
-          <Route exact path='/add'  element={<Add/>} />
               </Routes>
       </Router>
     </div>

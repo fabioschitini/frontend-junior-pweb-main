@@ -1,9 +1,9 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button,Form,Alert} from 'react-bootstrap';
+import { Button,Form} from 'react-bootstrap';
 import { Formik } from 'formik';
-import { useNavigate,useLocation,useSearchParams } from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 import * as yup from 'yup';
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 import { Link} from 'react-router-dom';
 import { ReactComponent as KleverLogo } from '../assets/logo.svg';
 import { ReactComponent as StarLogo } from '../assets/shooting-star.svg';
@@ -14,8 +14,6 @@ const instance = Axios.create({
   });
 const AdicionarMedicos=()=>{
   const [medicoError,setMedicoError]=useState(false)
-  const location = useLocation();
-  const filteredId=location.pathname.replace('/medico/edit/','');
   const navigate=useNavigate()
 
 
