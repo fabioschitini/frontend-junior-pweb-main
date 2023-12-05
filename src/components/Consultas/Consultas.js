@@ -12,9 +12,6 @@ const instance = Axios.create({
 
 const Consultas=()=>{
     const [consultas,setConsultas]=useState([])
-    function deletar(id){
-        instance.delete(`consultas/${id}`).then(setConsultas(consultas.filter(consulta=>consulta.id!=id)))
-    }
     useEffect(()=>{
         instance.get(`/consultas`).then(data=>{ 
             console.log(data)
@@ -42,7 +39,8 @@ const Consultas=()=>{
                         <div key={consulta.id}className='my-0'  style={{display:'flex',flexDirection:'row',justifyContent: 'space-between'}} >
                             <div className='my-0' style={{display:'flex',flexDirection:'column',justifyContent: 'space-between'}}>
                                 <h3 id={consulta.id}>Especialidade: {consulta.medico&&consulta.medico.especialidade}</h3>
-                                <p>Médico: {consulta.medico&&consulta.medico.nome}-crm:{consulta.medico&&consulta.medico.crm}</p>
+                                <p>Médico: {consulta.medico&&consulta.medico.nome}</p>
+                                <p>Crm:{consulta.medico&&consulta.medico.crm}</p>
                                 <div  style={{display:'flex',alignItems: 'center',marginRight:'20px'}}>
                                 <Link to={{pathname:`/consultas/desmarcar/${consulta.id}`}}>
                                     <Trash  id={consulta.id} style={{height:'3rem',color:'black'}}/>
@@ -52,7 +50,8 @@ const Consultas=()=>{
                             <div className='mr-3' style={{display:'flex',alignItems: 'end',flexDirection: 'column'}}>      
                                 <h3 >{consulta.data.dia}/{consulta.data.mes}/{consulta.data.dia}</h3>
                                 <h3>Horario: {consulta.data.hora}:{consulta.data.minuto}</h3>
-                                <p>Paciente:{consulta.paciente&&consulta.paciente.nome}-cpf:{consulta.paciente&&consulta.paciente.cpf}</p>
+                                <p>Paciente:{consulta.paciente&&consulta.paciente.nome}</p>
+                                <p>Cpf:{consulta.paciente&&consulta.paciente.cpf}</p>
 
                             </div>
                     </div>)
