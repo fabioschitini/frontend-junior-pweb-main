@@ -39,8 +39,8 @@ const MarcarConsultas=()=>{
 
 
     const schema = yup.object().shape({ 
-    medico: yup.string().required("Esse campo é obrigatorio"),
     paciente: yup.string().required("Esse campo é obrigatorio"),
+    medico: yup.string().required("Esse campo é obrigatorio"),
     data:yup.string().required("Esse campo é obrigatorio")
     });
 
@@ -55,7 +55,7 @@ const MarcarConsultas=()=>{
             <h2>Wish Wallet</h2> 
             </div>
           </div>
-        <div className='my-3' style={{display:'flex',justifyContent:'space-between'}}><h5>Marcar Consulta</h5>
+        <div className='my-3' style={{display:'flex',justifyContent:'space-between'}}><h5>Marcar Consulta </h5>
         <Link to='/medicos'> <Button style={{backgroundColor:'#641864',borderColor:'black'}} className="w-10 btn btn-sm btn-primary">Voltar</Button> </Link>
         </div>
         
@@ -70,7 +70,7 @@ const MarcarConsultas=()=>{
            var ano = date.getFullYear();
            var hora= date.getHours();
            var minuto = date.getMinutes();
-           console.log(diaDaSemana)
+ 
            instance.post(`/consulta-ms/consultas`,{medico:values.medico,paciente:values.paciente,dataConsulta:{
             ano:ano,
             mes:mes+1,
@@ -83,8 +83,10 @@ const MarcarConsultas=()=>{
             navigate('/')
         })
          .catch(e=>{
+          console.log(e)
         setConsultaError(e.response.data.mensagem)
     })
+
         }}
       initialValues={{
         medico: '',
@@ -110,7 +112,7 @@ const MarcarConsultas=()=>{
                 placeholder="Medico"
                 required
               >
-              <option disabled value="">Selecione o medico</option>
+              <option disabled value="" >Selecione o medico</option>
              {medicos && medicos.map(medico=>{
                 return(
                 <option value={medico.id}>{medico.nome}-{medico.especialidade}</option>

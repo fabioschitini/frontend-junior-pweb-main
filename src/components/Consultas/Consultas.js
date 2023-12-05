@@ -43,10 +43,10 @@ const Consultas=()=>{
                             <div className='my-0' style={{display:'flex',flexDirection:'column',justifyContent: 'space-between'}}>
                                 <h3 id={consulta.id}>Especialidade: {consulta.medico&&consulta.medico.especialidade}</h3>
                                 <p>Médico: {consulta.medico&&consulta.medico.nome}-crm:{consulta.medico&&consulta.medico.crm}</p>
-                                <div className='mr-3' style={{display:'flex',alignItems: 'center',marginRight:'20px'}}>
+                                <div  style={{display:'flex',alignItems: 'center',marginRight:'20px'}}>
                                 <Link to={{pathname:`/consultas/desmarcar/${consulta.id}`}}>
-  <Trash  id={consulta.id} style={{height:'3rem',color:'white'}}/>
-  </Link>
+                                    <Trash  id={consulta.id} style={{height:'3rem',color:'black'}}/>
+                                </Link>
                                 </div>
                             </div> 
                             <div className='mr-3' style={{display:'flex',alignItems: 'end',flexDirection: 'column'}}>      

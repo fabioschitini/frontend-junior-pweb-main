@@ -1,23 +1,23 @@
-body{
-    background-color: black;
+
+a{
+    color: aliceblue;
 }
 
-label{
-    color: aliceblue; 
-}
-p{
-    color: aliceblue;
-}
-h1{
-    color: aliceblue;
-}
-h2{
-    color: aliceblue;
-}
 h3{
-    color: aliceblue;
-    font-size: large;
+    font-size: 1rem; 
 }
-h5{
-    color: aliceblue;
+
+
+.my-0{
+    border-style: double;
+    padding: 10px;
+}
+
+.mr-3{
+    border-style: double;
+    padding: 10px;
+}
+
+.bi-trash{
+    cursor: pointer;
 }
