@@ -33,7 +33,7 @@ const Consultas=()=>{
                 <StarLogo style={{height:'3rem',color:'white'}}/>
                 <h2>Clinica do IFBA</h2> 
                 </div>
-       <Link to='/add'> <Button  style={{backgroundColor:'#641864',borderColor:'black'}}>Add Token</Button></Link>
+       <Link to='/consultas/marcar'> <Button  style={{backgroundColor:'#641864',borderColor:'black'}}>Marcar consulta</Button></Link>
         </div>
         <div style={{display:'flex',flexDirection:'column'}}>
             <div className='my-0' style={{display:'flex',justifyContent:'space-between'}}><h5>Consulta</h5><h5>Data</h5></div>
@@ -41,16 +41,18 @@ const Consultas=()=>{
                     return(
                         <div key={consulta.id}className='my-0'  style={{display:'flex',flexDirection:'row',justifyContent: 'space-between'}} >
                             <div className='my-0' style={{display:'flex',flexDirection:'column',justifyContent: 'space-between'}}>
-                                <h3 id={consulta.id}>Especialidade: {consulta.medico.especialidade}</h3>
-                                <p>Médico: {consulta.medico.nome}-crm:{consulta.medico.crm}</p>
+                                <h3 id={consulta.id}>Especialidade: {consulta.medico&&consulta.medico.especialidade}</h3>
+                                <p>Médico: {consulta.medico&&consulta.medico.nome}-crm:{consulta.medico&&consulta.medico.crm}</p>
                                 <div className='mr-3' style={{display:'flex',alignItems: 'center',marginRight:'20px'}}>
-                                <Trash onClick={()=>deletar(consulta.id)} id={consulta.id} style={{height:'3rem',color:'white'}}/>
+                                <Link to={{pathname:`/consultas/desmarcar/${consulta.id}`}}>
+  <Trash  id={consulta.id} style={{height:'3rem',color:'white'}}/>
+  </Link>
                                 </div>
                             </div> 
                             <div className='mr-3' style={{display:'flex',alignItems: 'end',flexDirection: 'column'}}>      
                                 <h3 >{consulta.data.dia}/{consulta.data.mes}/{consulta.data.dia}</h3>
-                                <h3>horario: {consulta.data.hora}:{consulta.data.minuto}</h3>
-                                <p>Paciente:{consulta.paciente.nome}-cpf:{consulta.paciente.cpf}</p>
+                                <h3>Horario: {consulta.data.hora}:{consulta.data.minuto}</h3>
+                                <p>Paciente:{consulta.paciente&&consulta.paciente.nome}-cpf:{consulta.paciente&&consulta.paciente.cpf}</p>
 
                             </div>
                     </div>)

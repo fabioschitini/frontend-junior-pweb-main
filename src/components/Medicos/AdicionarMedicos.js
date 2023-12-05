@@ -49,8 +49,8 @@ const AdicionarMedicos=()=>{
         </div>
         
        <Formik
-         validator={() => ({})}
-         validationSchema={schema}
+        validator={() => ({})}
+        validationSchema={schema}
         onSubmit={values=>{
             instance.post(`/medicos`,{nome:values.nome,telefone:values.telefone,email:values.email,crm:values.crm,especialidade:values.especialidade,endereco:{
                 UF:values.UF,
