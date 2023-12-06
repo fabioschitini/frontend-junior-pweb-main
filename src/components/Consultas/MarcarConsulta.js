@@ -53,7 +53,7 @@ const MarcarConsultas=()=>{
         <div className='my-3' style={{display:'flex',justifyContent:'space-between'}}>
         <div style={{display:'flex'}}>
             <StarLogo style={{height:'3rem',color:'white'}}/>
-            <h2>Wish Wallet</h2> 
+            <h2>Clinica do IFBA</h2> 
             </div>
           </div>
         <div className='my-3' style={{display:'flex',justifyContent:'space-between'}}><h5>Marcar Consulta </h5>
